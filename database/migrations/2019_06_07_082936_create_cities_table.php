@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBrainorCommerceAttributeValuesTable extends Migration
+class CreateCitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateBrainorCommerceAttributeValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('brainor_commerce_attribute_values', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('attribute_name_id');
-            $table->string('offer_id')->nullable();
-            $table->text('value');
+        Schema::create('cities', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateBrainorCommerceAttributeValuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brainor_commerce_attribute_values');
+        Schema::dropIfExists('cities');
     }
 }

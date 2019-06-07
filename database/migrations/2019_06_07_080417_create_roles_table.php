@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBrainorCommerceAttributeNamesTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateBrainorCommerceAttributeNamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('brainor_commerce_attribute_names', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('slug');
-            $table->text('name');
-            $table->string('category_id');
-            $table->integer('order')->default(0);
-            $table->boolean('filter')->default(true);
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateBrainorCommerceAttributeNamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brainor_commerce_attribute_names');
+        Schema::dropIfExists('roles');
     }
 }
