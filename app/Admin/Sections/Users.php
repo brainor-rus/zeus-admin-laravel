@@ -8,6 +8,7 @@ use Zeus\Admin\Section;
 use Zeus\Admin\SectionBuilder\Display\BaseDisplay\Display;
 use Zeus\Admin\SectionBuilder\Display\Table\Columns\BaseColumn\Column;
 use Zeus\Admin\SectionBuilder\Display\Table\DisplayTable;
+use Zeus\Admin\SectionBuilder\Filter\Types\BaseType\FilterType;
 use Zeus\Admin\SectionBuilder\Form\BaseForm\Form;
 use Zeus\Admin\SectionBuilder\Form\Panel\Columns\BaseColumn\FormColumn;
 use Zeus\Admin\SectionBuilder\Form\Panel\Fields\BaseField\FormField;
@@ -26,6 +27,17 @@ class Users extends Section
             Column::text('email', 'Email'),
             Column::text('city.name', 'Город'),
             Column::text('created_at', 'Дата добавления'),
+        ])->setFilter([
+            null,
+            null,
+            FilterType::select('city_id')
+                ->setIsLike(false)
+                ->setModelForOptions(City::class)
+                ->setQueryFunctionForModel(function ($q) {
+                    return $q->whereIn('id', [1, 2]);
+                })
+                ->setDisplay("name"),
+            null
         ])->setPagination(10);
 
         return $display;
@@ -40,8 +52,10 @@ class Users extends Section
     {
         $form = Form::panel([
             FormColumn::column([
-                FormField::input('name', 'Имя')->setRequired(true),
-                FormField::datepicker('date', 'Дата','2018-10-01')->setRequired(true),
+                FormField::input('name', 'Имя')
+                    ->setRequired(true)
+                    ->setHelpBlock('<small class="text-muted">Тест</small>'),
+                FormField::datepicker('created_at', 'Дата')->setRequired(true),
                 FormField::hidden('password')->setValue('asdf'),
             ]),
             FormColumn::column([
