@@ -19,6 +19,10 @@ class UsersTableSeeder extends Seeder
 
             $user->city()->associate($city);
             $user->save();
+
+            for($i = 0; $i < 5; $i++) {
+                $user->contacts()->save(factory(\App\Models\Contact::class)->make());
+            }
         });
     }
 }
