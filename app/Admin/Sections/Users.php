@@ -3,7 +3,10 @@
 namespace App\Admin\Sections;
 
 use App\Models\City;
+use App\Models\Contact;
 use App\Models\Role;
+use App\Models\Type;
+use App\Models\User;
 use Zeus\Admin\Section;
 use Zeus\Admin\SectionBuilder\Display\BaseDisplay\Display;
 use Zeus\Admin\SectionBuilder\Display\Table\Columns\BaseColumn\Column;
@@ -56,6 +59,16 @@ class Users extends Section
                     ->setRequired(true)
                     ->setHelpBlock('<small class="text-muted">Тест</small>'),
                 FormField::datepicker('created_at', 'Дата')->setRequired(true),
+                FormField::related('contacts', 'Контакты', [
+                    FormField::select('type_id', 'Тип')
+                        ->setModelForOptions(Type::class)
+                        ->setDisplay('name')
+                        ->setQueryFunctionForModel(function ($query) {
+                            return $query->where('class', 'ContactType');
+                        })
+                        ->setRequired(1),
+                    FormField::input('value', 'Значение')
+                ]),
                 FormField::hidden('password')->setValue('asdf'),
             ]),
             FormColumn::column([
