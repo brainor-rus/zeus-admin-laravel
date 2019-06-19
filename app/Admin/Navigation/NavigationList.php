@@ -24,6 +24,11 @@ class NavigationList
                         'icon' => 'fas fa-user-circle',
                         'text' => 'Роли'
                     ],
+                    [
+                        'url' => '/'.config('zeusAdmin.admin_url').'/Contacts',
+                        'icon' => 'fas fa-phone',
+                        'text' => 'Контакты'
+                    ],
                 ]
             ],
             [

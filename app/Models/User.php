@@ -28,11 +28,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public $zeusAdminIgnore = [
+        'notifications', 'readNotifications', 'unreadNotifications'
+    ];
+
     public function roles() {
         return $this->belongsToMany(Role::class);
     }
 
     public function city() {
         return $this->belongsTo(City::class);
+    }
+
+    public function contacts() {
+        return $this->hasMany(Contact::class);
     }
 }
