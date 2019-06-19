@@ -28,6 +28,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public $zeusAdminIgnore = [
+        'notifications', 'readNotifications', 'unreadNotifications'
+    ];
+
     public function roles() {
         return $this->belongsToMany(Role::class);
     }

@@ -59,7 +59,7 @@ class Users extends Section
                     ->setRequired(true)
                     ->setHelpBlock('<small class="text-muted">Тест</small>'),
                 FormField::datepicker('created_at', 'Дата')->setRequired(true),
-                FormField::related('contacts', 'Контакты', [
+                FormField::related('contacts', 'Контакты', Contact::class, [
                     FormField::select('type_id', 'Тип')
                         ->setModelForOptions(Type::class)
                         ->setDisplay('name')
