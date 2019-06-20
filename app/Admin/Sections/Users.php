@@ -60,12 +60,15 @@ class Users extends Section
                     ->setHelpBlock('<small class="text-muted">Тест</small>'),
                 FormField::datepicker('created_at', 'Дата')->setRequired(true),
                 FormField::related('contacts', 'Контакты', Contact::class, [
-                    FormField::select('type_id', 'Тип')
+                    FormField::bselect('type_id', 'Тип')
                         ->setModelForOptions(Type::class)
                         ->setDisplay('name')
                         ->setQueryFunctionForModel(function ($query) {
                             return $query->where('class', 'ContactType');
                         })
+                        ->setDataAttributes([
+                            'data-live-search="true"'
+                        ])
                         ->setRequired(1),
                     FormField::input('value', 'Значение')
                 ]),
@@ -74,11 +77,17 @@ class Users extends Section
             FormColumn::column([
                 FormField::input('email', 'Email')->setRequired(true)
                     ->setPlaceholder('Email пользователя'),
-                FormField::multiselect('roles', 'Роли')
+                FormField::bselect('roles', 'Роли')
                     ->setModelForOptions(Role::class)
+                    ->setDataAttributes([
+                        'multiple', 'data-live-search="true"'
+                    ])
                     ->setDisplay('name'),
-                FormField::select('city_id', 'Город')
+                FormField::bselect('city_id', 'Город')
                     ->setModelForOptions(City::class)
+                    ->setDataAttributes([
+                        'data-live-search="true"'
+                    ])
                     ->setDisplay('name'),
                 FormField::custom('<b>Кастомное поле</b>')
             ], 'col-4'),
