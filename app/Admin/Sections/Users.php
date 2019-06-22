@@ -37,7 +37,7 @@ class Users extends Section
                 ->setIsLike(false)
                 ->setModelForOptions(City::class)
                 ->setQueryFunctionForModel(function ($q) {
-                    return $q->whereIn('id', [1, 2]);
+//                    return $q->whereIn('id', [1, 2]);
                 })
                 ->setDisplay("name"),
             null
