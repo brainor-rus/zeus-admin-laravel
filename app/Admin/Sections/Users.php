@@ -33,7 +33,10 @@ class Users extends Section
         ])->setFilter([
             null,
             null,
-            FilterType::select('city_id')
+            FilterType::bselect('city_id')
+                ->setDataAttributes([
+                    'data-live-search="true"'
+                ])
                 ->setIsLike(false)
                 ->setModelForOptions(City::class)
                 ->setQueryFunctionForModel(function ($q) {
