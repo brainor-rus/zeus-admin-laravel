@@ -44,7 +44,7 @@ class Users extends Section
                 })
                 ->setDisplay("name"),
             null
-        ])->setPagination(10);
+        ])->setPagination('all');
 
         return $display;
     }
