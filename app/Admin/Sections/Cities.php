@@ -37,7 +37,7 @@ class Cities extends Section
         $form = Form::panel([
             FormColumn::column([
                 FormField::input('name', 'Имя')->setRequired(true),
-                FormField::input('slug', 'Слаг')->setRequired(true),
+                FormField::gallery('Изображения'),
             ])
         ]);
 
