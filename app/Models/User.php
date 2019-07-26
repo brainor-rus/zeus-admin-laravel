@@ -43,4 +43,29 @@ class User extends Authenticatable
     public function contacts() {
         return $this->hasMany(Contact::class);
     }
+
+    public function getPermissionsAttribute()
+    {
+        $user = User::with('roles')->where('id',$this->id)->first();
+        $roles =  Role::with('permissions')->whereIn('id',$user->roles->pluck('id'))->get();
+        $permissions = array();
+        foreach($roles as $role){
+            foreach($role->permissions as $permission) {
+                $permissions[] = $permission->slug;
+            }
+        }
+
+        return $permissions;
+    }
+
+    public function hasPermission($permission) {
+        return in_array($permission, $this->permissions ?? []);
+    }
+
+    public function isSuperAdmin() {
+        $roles = $this->roles()->pluck('slug');
+        $roles = isset($roles) ? $roles->toArray() : [];
+
+        return in_array("super_admin", $roles);
+    }
 }
