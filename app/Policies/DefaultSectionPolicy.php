@@ -76,7 +76,6 @@ class DefaultSectionPolicy
      */
     public function checkAccess(User $user, $section, $ability)
     {
-//        throw new \Exception("$section.$ability");
-        return $user->hasPermission("$section.$ability");
+        return $user->hasRoleWithPermission("$section.$ability");
     }
 }
