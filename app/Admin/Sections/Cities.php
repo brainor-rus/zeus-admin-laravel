@@ -18,6 +18,8 @@ class Cities extends Section
     protected $title = 'Города';
     protected $model = '\App\Models\City';
 
+    protected $checkAccess = true;
+
     public static function onDisplay(Request $request){
 
         $display = Display::table([

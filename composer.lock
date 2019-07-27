@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32cb4c6c87759daff74ac504c749aba7",
+    "content-hash": "d090d931124515aa48516807e425e46c",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -74,16 +74,16 @@
         },
         {
             "name": "brainor-rus/zeus-admin",
-            "version": "1.0.45",
+            "version": "dev-feature/Permissions",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brainor-rus/zeus-admin.git",
-                "reference": "c7d09f09064fd788a9005a006bf8221d8c70e44d"
+                "reference": "24df90aff8da691e1da0dcee2aebb8008676cb5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brainor-rus/zeus-admin/zipball/c7d09f09064fd788a9005a006bf8221d8c70e44d",
-                "reference": "c7d09f09064fd788a9005a006bf8221d8c70e44d",
+                "url": "https://api.github.com/repos/brainor-rus/zeus-admin/zipball/24df90aff8da691e1da0dcee2aebb8008676cb5b",
+                "reference": "24df90aff8da691e1da0dcee2aebb8008676cb5b",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
                 "laravel admin",
                 "zeus"
             ],
-            "time": "2019-07-24T12:14:33+00:00"
+            "time": "2019-07-26T09:36:16+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -5242,7 +5242,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "brainor-rus/zeus-admin": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

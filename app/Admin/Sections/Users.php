@@ -23,6 +23,8 @@ class Users extends Section
     protected $title = 'Пользователи';
     protected $model = '\App\Models\User';
 
+//    protected $checkAccess = true;
+
     public static function onDisplay(Request $request){
 
         $display = Display::table([

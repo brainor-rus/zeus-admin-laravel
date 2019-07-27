@@ -25,10 +25,23 @@ class NavigationList
                         'text' => 'Роли'
                     ],
                     [
-                        'url' => '/'.config('zeusAdmin.admin_url').'/Contacts',
-                        'icon' => 'fas fa-phone',
-                        'text' => 'Контакты'
+                        'url' => '/' . config('zeusAdmin.admin_url') . '/Permissions',
+                        'icon' => 'fas fa-user-circle',
+                        'text' => 'Привелегии'
                     ],
+                    [
+                        'url' => '/'.config('zeusAdmin.admin_url').'/TreeTest',
+                        'icon' => 'fas fa-users',
+                        'text' => 'Тест вложенности',
+                        'noDirect' => true,
+                        'nodes' => [
+                            [
+                                'url' => '/'.config('zeusAdmin.admin_url').'/Contacts',
+                                'icon' => 'fas fa-phone',
+                                'text' => 'Контакты'
+                            ],
+                        ]
+                    ]
                 ]
             ],
             [

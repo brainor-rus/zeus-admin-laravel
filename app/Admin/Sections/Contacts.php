@@ -22,6 +22,8 @@ class Contacts extends Section
     protected $title = 'Контакты';
     protected $model = '\App\Models\Contact';
 
+    protected $checkAccess = true;
+
     public static function onDisplay(Request $request){
 
         $display = Display::table([
